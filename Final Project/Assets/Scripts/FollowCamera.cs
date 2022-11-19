@@ -27,14 +27,8 @@ public class FollowCamera : MonoBehaviour
     {
         if (null != m_target)
         {
-            /*Vector3 pos = m_target.position + m_offset;
-            pos.y = m_original.y;
-            pos.z = m_original.z;
-            transform.position = pos;*/
-
             Vector3 pos = m_target.position + m_offset;
 
-            pos.x = m_original.x;
             pos.z = m_original.z;
             transform.position = pos;
 
