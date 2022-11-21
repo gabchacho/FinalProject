@@ -7,6 +7,7 @@ public class Platform : MonoBehaviour
 
     public float jumpForce = 10.0f;
     Vector2 velocity;
+    Rigidbody2D rigid;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class Platform : MonoBehaviour
     {
         if (collision.relativeVelocity.y <= 0.0f) 
         {
-            Rigidbody2D rigid = collision.gameObject.GetComponent<Rigidbody2D>();
+            rigid = collision.gameObject.GetComponent<Rigidbody2D>();
 
             velocity = rigid.velocity;
             velocity.y = jumpForce;
