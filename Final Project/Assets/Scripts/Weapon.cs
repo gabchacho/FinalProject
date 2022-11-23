@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     Touch touch;
     Vector3 touchPos;
+    float timer;
+    bool shot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,31 +47,41 @@ public class Weapon : MonoBehaviour
     void Shoot(Vector3 loc)    
     {
 
-        Vector3 newPos = Vector3.Normalize(loc - transform.position);
+        timer -= Time.deltaTime;
 
-        //loc.z = 0f;
+        if (timer < 0f && shot)
+        {
+            shot = false;
 
-        transform.up = newPos;
+            timer = 0.2f;
+        }
+
+        //if (!shot) 
+        //{
+            //these two lines aim at the player's tap
+            Vector3 newPos = Vector3.Normalize(loc - transform.position);
+            transform.up = newPos; //we need to aim at the point where the player clicked before clamping
+
+            Vector3 angles = transform.localEulerAngles; //this calculates the euler angles
+
+            if (transform.localEulerAngles.z > 90 && transform.localEulerAngles.z < 180)
+            {
+                angles.z = 90.0f;
+            }
+
+            if (transform.localEulerAngles.z > 180 && transform.localEulerAngles.z < 270)
+            {
+                angles.z = 270.0f;
+            }
+
+            transform.localEulerAngles = angles;
+
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            shot = true;
+        //}
 
  
 
-        /*if (transform.rotation.z < -50.0f || transform.rotation.z > 50.0f) 
-        {
-            //Mathf.Clamp(transform.position.z, -50.0f, 50.0f);
-
-            Debug.Log(transform.rotation);
-
-        }*/
-
-        //Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        /*RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, touchPos);
-
-        if (hitInfo) 
-        {
-            Debug.Log(hitInfo.transform.name);
-        }*/
-
-        //Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

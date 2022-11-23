@@ -13,12 +13,14 @@ public class PlatformGenerator : MonoBehaviour
 
     int whichPlatform;
 
-    Vector3 offset = new Vector3(0f, 7.0f, 0f);
+    Vector3 spawnPosition;
+
+    Vector3 offset = new Vector3(0f, 8.0f, 0f);
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 spawnPosition = player.position + offset;
+        spawnPosition = player.position + offset;
 
         //spawnPosition.x = Random.Range(-levelWidth, levelWidth);
 

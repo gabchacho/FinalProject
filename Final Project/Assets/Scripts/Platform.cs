@@ -23,13 +23,16 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0.0f) 
+        if (collision.gameObject.GetComponent<Player>()) 
         {
-            rigid = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (collision.relativeVelocity.y <= 0.0f)
+            {
+                rigid = collision.gameObject.GetComponent<Rigidbody2D>();
 
-            velocity = rigid.velocity;
-            velocity.y = jumpForce;
-            rigid.velocity = velocity;
+                velocity = rigid.velocity;
+                velocity.y = jumpForce;
+                rigid.velocity = velocity;
+            }
         }
     }
 
