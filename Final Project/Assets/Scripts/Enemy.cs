@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float m_forwardSpeed = 1.0f;
+    public float m_forwardSpeed = 0.5f;
     //SpriteRenderer sprite;
     Rigidbody2D rigid;
     bool onGround = false;
     Vector2 vel;
+    bool facingRight = true;
+    Vector3 start, end;
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +22,23 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
 
         //transform.position += Vector3.right.x * m_forwardSpeed * Time.deltaTime;
 
         //start 
         //take enemy position + the facing direction by some distance... start point
-        Vector3 start = transform.position + Vector3.right;
+        if (facingRight)
+        {
+            start = transform.position + Vector3.right;
+        } else 
+        {
+            start = transform.position + Vector3.left;
+        }
+
 
         //straight down... start and the down 
-        Vector3 end = start + Vector3.down;
+        end = start + Vector3.down;
 
         Debug.DrawLine(start, end);
 
@@ -42,7 +51,17 @@ public class Enemy : MonoBehaviour
             Vector3 currRot = transform.localEulerAngles;
             currRot.y += 180;
             transform.localEulerAngles = currRot;
-            m_forwardSpeed *= -1;
+
+            if (facingRight)
+            {
+                facingRight = false;
+            }
+            else 
+            {
+                facingRight = true;
+            }
+
+            m_forwardSpeed *= -1f;
             StartCoroutine(Wait());
         }
 
