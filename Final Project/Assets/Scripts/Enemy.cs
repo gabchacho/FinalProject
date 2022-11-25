@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int health = 10;
+
     public float m_forwardSpeed = 0.5f;
     //SpriteRenderer sprite;
     Rigidbody2D rigid;

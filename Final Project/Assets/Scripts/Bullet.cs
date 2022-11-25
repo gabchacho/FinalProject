@@ -18,4 +18,13 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 0.5f);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>(out Enemy enemyComponent)) 
+        {
+
+        }
+    }
+
 }
