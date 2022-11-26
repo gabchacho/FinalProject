@@ -19,6 +19,8 @@ public class PlatformGenerator : MonoBehaviour
 
     Vector3 offset = new Vector3(0f, 5.0f, 0f);
 
+    bool reachedEnd = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +45,27 @@ public class PlatformGenerator : MonoBehaviour
 
         //spawnPosition.z = 0.0f;
 
-        endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
+        /*if (player.position.y > spawnPosition.y) 
+        {
+            endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-        Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+            Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+        }*/
 
-        Debug.Log(endZone.transform.position);
+        //Debug.Log(endZone.transform.position);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.position.y > spawnPosition.y && !reachedEnd)
+        {
+            endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+            Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+
+            reachedEnd = true;
+        }
     }
 }
