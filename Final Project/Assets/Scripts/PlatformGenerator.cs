@@ -15,7 +15,7 @@ public class PlatformGenerator : MonoBehaviour
 
     Vector3 spawnPosition;
 
-    Vector3 offset = new Vector3(0f, 8.0f, 0f);
+    Vector3 offset = new Vector3(0f, 3.0f, 0f);
 
     // Start is called before the first frame update
     void Start()
