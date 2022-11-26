@@ -78,13 +78,13 @@ public class Enemy : MonoBehaviour
     {
         onGround = true;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
 
         onGround = false;
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
