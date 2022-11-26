@@ -15,7 +15,7 @@ public class PlatformGenerator : MonoBehaviour
 
     Vector3 spawnPosition;
 
-    Vector3 offset = new Vector3(0f, 3.0f, 0f);
+    Vector3 offset = new Vector3(0f, 5.0f, 0f);
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class PlatformGenerator : MonoBehaviour
 
         for (int i = 0; i < numOfSections; i++)
         {
-            spawnPosition.y += 10f;
+            spawnPosition.y += 8f;
             //spawnPosition.x = Random.Range(-levelWidth, levelWidth);
 
             whichPlatform = Random.Range(0, sections.Count);

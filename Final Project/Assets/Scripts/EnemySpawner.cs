@@ -12,13 +12,13 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
 
-        //int num = Random.Range(0, 10);
+        int num = Random.Range(0, 10);
 
 
-        Instantiate(enem, transform.position, transform.rotation);
-
-
-
+        if (num < 5) 
+        {
+            Instantiate(enem, transform.position, transform.rotation);
+        }
 
         Destroy(gameObject);
         

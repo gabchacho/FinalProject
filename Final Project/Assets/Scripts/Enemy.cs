@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int health = 10;
 
-    public float m_forwardSpeed = 0.5f;
+    public float m_forwardSpeed = 0.2f;
     //SpriteRenderer sprite;
     Rigidbody2D rigid;
     bool onGround = false;
@@ -25,9 +25,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-
-        //transform.position += Vector3.right.x * m_forwardSpeed * Time.deltaTime;
-
         //start 
         //take enemy position + the facing direction by some distance... start point
         if (facingRight)
@@ -42,7 +39,7 @@ public class Enemy : MonoBehaviour
         //straight down... start and the down 
         end = start + Vector3.down;
 
-        Debug.DrawLine(start, end);
+        //Debug.DrawLine(start, end);
 
         //RaycastHit2D rc = Physics2D.Linecast(start, end);
 
