@@ -7,6 +7,8 @@ public class PlatformGenerator : MonoBehaviour
     public List<GameObject> sections;
     public int numOfSections = 15;
 
+    public GameObject endZone;
+
     //public float levelWidth = 2f;
 
     public Transform player;
@@ -38,6 +40,14 @@ public class PlatformGenerator : MonoBehaviour
 
             Instantiate(sections[whichPlatform], spawnPosition, Quaternion.identity);
         }
+
+        //spawnPosition.z = 0.0f;
+
+        endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+
+        Debug.Log(endZone.transform.position);
 
     }
 
