@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20.0f;
     public Rigidbody2D rb;
+    public GameObject m_explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +22,20 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        
-        /*if (collision.gameObject.GetComponent<Enemy>(out Enemy enemyComponent)) 
-        {
 
+        Explode();
+ 
+    }
+
+
+    void Explode()
+    {
+        if (null != m_explosion)
+        {
+            GameObject explode = Instantiate(m_explosion);
+            explode.transform.position = transform.position;
         }
-        */
+        Destroy(gameObject);
     }
 
 }
