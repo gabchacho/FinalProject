@@ -78,16 +78,3 @@ public class Weapon : MonoBehaviour
 
     }
 }
-
-
-/*timer -= Time.deltaTime;
-
-    if (timer < 0f && shot)
-    {
-        shot = false;
-
-        timer = 0.2f;
-    }*/
-
-//if (!shot) 
-//{

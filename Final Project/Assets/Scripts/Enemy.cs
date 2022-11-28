@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 10;
+    public int health = 1;
 
-    public float m_forwardSpeed = 0.2f;
-    //SpriteRenderer sprite;
-    Rigidbody2D rigid;
-    bool onGround = false;
-    Vector2 vel;
-    bool facingRight = true;
-    Vector3 start, end;
+    public float m_forwardSpeed = 2.2f;
+    protected Rigidbody2D rigid;
+    //bool onGround = false;
+    //bool facingRight = true;
+    //Vector3 start, end;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        //sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -27,7 +24,7 @@ public class Enemy : MonoBehaviour
 
         //start 
         //take enemy position + the facing direction by some distance... start point
-        if (facingRight)
+        /*if (facingRight)
         {
             start = transform.position + Vector3.right;
         } else 
@@ -40,8 +37,6 @@ public class Enemy : MonoBehaviour
         end = start + Vector3.down;
 
         //Debug.DrawLine(start, end);
-
-        //RaycastHit2D rc = Physics2D.Linecast(start, end);
 
         if (!onGround && !Physics2D.Linecast(start, end)) 
         {
@@ -66,33 +61,35 @@ public class Enemy : MonoBehaviour
 
         vel = rigid.velocity;
         vel.x = Vector2.right.x * m_forwardSpeed;
-        rigid.velocity = vel;
+        rigid.velocity = vel;*/
 
     }
 
 
-    IEnumerator Wait() 
-    {
-        onGround = true;
+    /*    IEnumerator Wait() 
+        {
+            onGround = true;
 
-        yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.3f);
 
-        onGround = false;
-    }
+            onGround = false;
+        }
+    */
 
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            health -= 1;
+
+            if (health == 0) 
+            {
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
         }
 
     }
-
-
-
-
 
 }

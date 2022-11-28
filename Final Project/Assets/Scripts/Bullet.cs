@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
 
         Explode();
@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
             GameObject explode = Instantiate(m_explosion);
             explode.transform.position = transform.position;
         }
+
         Destroy(gameObject);
     }
 

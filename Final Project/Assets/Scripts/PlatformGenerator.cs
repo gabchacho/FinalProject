@@ -9,8 +9,6 @@ public class PlatformGenerator : MonoBehaviour
 
     public GameObject endZone;
 
-    //public float levelWidth = 2f;
-
     public Transform player;
 
     int whichPlatform;
@@ -26,7 +24,7 @@ public class PlatformGenerator : MonoBehaviour
     {
         spawnPosition = player.position + offset;
 
-        //spawnPosition.x = Random.Range(-levelWidth, levelWidth);
+        spawnPosition.x = 2;
 
         whichPlatform = Random.Range(0, sections.Count);
 
@@ -36,7 +34,7 @@ public class PlatformGenerator : MonoBehaviour
         for (int i = 0; i < numOfSections; i++)
         {
             spawnPosition.y += 8f;
-            //spawnPosition.x = Random.Range(-levelWidth, levelWidth);
+            spawnPosition.x = 2;
 
             whichPlatform = Random.Range(0, sections.Count);
 
@@ -59,13 +57,16 @@ public class PlatformGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.position.y > spawnPosition.y && !reachedEnd)
+        if (player != null) 
         {
-            endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
+            if (player.position.y > spawnPosition.y && !reachedEnd)
+            {
+                endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-            Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+                Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
 
-            reachedEnd = true;
+                reachedEnd = true;
+            }
         }
     }
 }

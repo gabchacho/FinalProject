@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6181528028456131276}
   - component: {fileID: 6181528028456131275}
   - component: {fileID: 6181528028456131278}
-  - component: {fileID: 3153582909567993570}
+  - component: {fileID: 7196840588141757140}
   m_Layer: 0
   m_Name: EnemySlime
   m_TagString: Enemy
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.383102, y: 1.7331016}
   m_EdgeRadius: 0
---- !u!114 &3153582909567993570
+--- !u!114 &7196840588141757140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6181528028456131274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9edaa53329cf79499d26099d794113f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cbe2b5a57e0ea540a6965a71f0bfc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  m_forwardSpeed: 3
