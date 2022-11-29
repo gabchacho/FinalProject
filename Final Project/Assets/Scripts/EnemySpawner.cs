@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enem;
     //public Transform enemyTrans;
 
+    //public List<GameObject> enemList;
+
     // Start is called before the first frame update
     void Start()
     {
