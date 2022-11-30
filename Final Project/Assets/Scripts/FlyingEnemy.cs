@@ -8,14 +8,17 @@ public class FlyingEnemy : Enemy
     public float timer = 2.0f;
     public GameObject bulletPrefab;
     public List<Transform> firePoints;
-    //public Transform firePoint_0;
-    //public Transform firePoint_1;
-    //public Transform firePoint_2;
-
+    public Player player;
+  
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+
+        if (null == player)
+        {
+            player = FindObjectOfType<Player>();
+        }
     }
 
     // Update is called once per frame
@@ -23,19 +26,20 @@ public class FlyingEnemy : Enemy
     {
         timer -= Time.deltaTime;
 
-        //transform.position = Vector3.Lerp(transform.position.y + 2.0f, transform.position.y - 2.0f, 2.0f);
-
         if (timer <= 0) 
         {
             foreach (Transform t in firePoints) 
             {
-                Instantiate(bulletPrefab, t.position, t.rotation);
-            }
+                //if (transform.position.x > player.transform.position.x)
+                //{
+                    Vector3 currRot = transform.localEulerAngles;
+                    currRot.y += 180;
+                    transform.localEulerAngles = currRot;
+                //}
 
-            /*Instantiate(bulletPrefab, firePoint_0.position, firePoint_0.rotation);
-            Instantiate(bulletPrefab, firePoint_1.position, firePoint_1.rotation);
-            Instantiate(bulletPrefab, firePoint_2.position, firePoint_2.rotation);
-            */
+                Instantiate(bulletPrefab, t.position, t.rotation);
+
+            }
 
             timer = 2.0f;
         }

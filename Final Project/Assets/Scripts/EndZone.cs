@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class EndZone : MonoBehaviour
 {
-    //public TextMeshProUGUI endZoneText;
-    public GameObject endZoneText;
+    public TextMeshProUGUI win;
 
     // Start is called before the first frame update
     void Start()
     {
-        endZoneText.gameObject.SetActive(false);
+        //win.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +25,7 @@ public class EndZone : MonoBehaviour
         {
             Time.timeScale = 0.0f;
 
-            endZoneText.gameObject.SetActive(true);
+            //win.gameObject.SetActive(true);
         }
     }
 }

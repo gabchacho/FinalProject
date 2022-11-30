@@ -12,10 +12,9 @@ public class Player : MonoBehaviour
     float movement = 0.0f;
     public float speed = 10.0f;
     Vector2 playVel;
-    float dirX;
+    //float dirX;
     public TextMeshProUGUI playerHealth;
     public TextMeshProUGUI lose;
-    public TextMeshProUGUI win;
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +27,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //movement = Input.GetAxis("Horizontal") * speed;
+        if (Input.acceleration.x > 0) 
+        {
+            movement = Input.acceleration.x * speed;
+        } else
+        {
+            movement = Input.GetAxis("Horizontal") * speed;
+        }
 
-        dirX = Input.acceleration.x * speed;
 
     }
 
     private void FixedUpdate()
     {
         playVel = rigidbody.velocity;
-        //playVel.x = movement;
-        playVel.x = dirX;
+        playVel.x = movement;
+        //playVel.x = dirX;
         rigidbody.velocity = playVel;
     }
 
@@ -47,12 +51,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag.Equals("Enemy"))
         {
             TakeDamage();
-
-            /*if (health == 0)
-            {
-                Destroy(gameObject);
-            }*/
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,12 +62,11 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
 
             TakeDamage();
+        }
 
-            /*if (health == 0)
-            {
-                Destroy(gameObject);
-            }*/
-
+        if (collision.gameObject.tag.Equals("Destroyer"))
+        {
+            Die();
         }
     }
 
@@ -83,24 +82,31 @@ public class Player : MonoBehaviour
 
         playerHealth.text = "Health: " + health.ToString();
 
-        if (health == 0)
+        if (health <= 0)
         {
-            Destroy(gameObject);
-
-            lose.gameObject.SetActive(true);
-
-            //StartCoroutine(Restart());
-
-            SceneManager.LoadScene("Bunny Jump");
+            Die();
         }
 
         StartCoroutine(Invincible());
+    }
+
+    private void Die() 
+    {
+        Destroy(gameObject);
+
+        lose.gameObject.SetActive(true);
+
+        //StartCoroutine(Restart());
+
+        SceneManager.LoadScene("Bunny Jump");
     }
 
     IEnumerator Restart() 
     {
         yield return new WaitForSeconds(3.0f);
     }
+
+
 
 
 }

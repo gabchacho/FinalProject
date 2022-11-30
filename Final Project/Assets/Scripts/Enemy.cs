@@ -8,9 +8,6 @@ public class Enemy : MonoBehaviour
 
     public float m_forwardSpeed = 2.2f;
     protected Rigidbody2D rigid;
-    //bool onGround = false;
-    //bool facingRight = true;
-    //Vector3 start, end;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -22,60 +19,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        //start 
-        //take enemy position + the facing direction by some distance... start point
-        /*if (facingRight)
-        {
-            start = transform.position + Vector3.right;
-        } else 
-        {
-            start = transform.position + Vector3.left;
-        }
-
-
-        //straight down... start and the down 
-        end = start + Vector3.down;
-
-        //Debug.DrawLine(start, end);
-
-        if (!onGround && !Physics2D.Linecast(start, end)) 
-        {
-            //onGround = Physics2D.Linecast(start, end);
-
-            Vector3 currRot = transform.localEulerAngles;
-            currRot.y += 180;
-            transform.localEulerAngles = currRot;
-
-            if (facingRight)
-            {
-                facingRight = false;
-            }
-            else 
-            {
-                facingRight = true;
-            }
-
-            m_forwardSpeed *= -1f;
-            StartCoroutine(Wait());
-        }
-
-        vel = rigid.velocity;
-        vel.x = Vector2.right.x * m_forwardSpeed;
-        rigid.velocity = vel;*/
 
     }
-
-
-    /*    IEnumerator Wait() 
-        {
-            onGround = true;
-
-            yield return new WaitForSeconds(0.3f);
-
-            onGround = false;
-        }
-    */
-
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
