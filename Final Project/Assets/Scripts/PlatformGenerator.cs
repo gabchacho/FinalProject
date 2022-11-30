@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformGenerator : MonoBehaviour
 {
     public List<GameObject> sections;
-    public int numOfSections = 15;
+    public int numOfSections = 30;
 
     public GameObject endZone;
 

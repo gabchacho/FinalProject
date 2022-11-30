@@ -50,7 +50,11 @@ public class Weapon : MonoBehaviour
 
         //these two lines aim at the player's tap
         Vector3 newPos = Vector3.Normalize(loc - transform.position);
-        transform.up = newPos; //we need to aim at the point where the player clicked before clamping
+
+        float angle = Mathf.Rad2Deg * Mathf.Atan2(-newPos.x, newPos.y);
+
+        transform.localEulerAngles = new Vector3(0, 0, angle);
+        //transform.up = newPos; //we need to aim at the point where the player clicked before clamping
 
         Vector3 angles = transform.localEulerAngles; //this calculates the euler angles
 
