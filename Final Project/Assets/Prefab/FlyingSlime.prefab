@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 6705100795382962010}
   - {fileID: 6705100793498134349}
   - {fileID: 6705100794920769007}
+  player: {fileID: 0}
 --- !u!50 &6705100795579212469
 Rigidbody2D:
   serializedVersion: 4
@@ -223,7 +224,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &6705100795579212470
 CircleCollider2D:
   m_ObjectHideFlags: 0

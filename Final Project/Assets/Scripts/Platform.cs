@@ -35,6 +35,7 @@ public class Platform : MonoBehaviour
                 rigid.velocity = velocity;
 
                 //jumpSound.Play();
+                collision.gameObject.GetComponent<Player>().jumpSound.Play();
             }
         }
     }

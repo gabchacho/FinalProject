@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     float movement = 0.0f;
     public float speed = 10.0f;
     Vector2 playVel;
-    //float dirX;
     public TextMeshProUGUI playerHealth;
     public TextMeshProUGUI lose;
     public AudioSource jumpSound;
@@ -54,10 +53,10 @@ public class Player : MonoBehaviour
             TakeDamage();
         }
 
-        if (collision.gameObject.tag.Equals("Platform") && Physics2D.Linecast(transform.position, transform.position + Vector3.down)) 
+        /*if (collision.gameObject.tag.Equals("Platform") && Physics2D.Linecast(transform.position, transform.position + Vector3.down)) 
         {
             jumpSound.Play();
-        }
+        }*/
 
     }
 
@@ -98,18 +97,18 @@ public class Player : MonoBehaviour
 
     private void Die() 
     {
-        Destroy(gameObject);
-
         lose.gameObject.SetActive(true);
 
-        //StartCoroutine(Restart());
+        StartCoroutine(Restart());
 
-        SceneManager.LoadScene("Bunny Jump");
     }
 
     IEnumerator Restart() 
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSecondsRealtime(3.0f);
+
+        SceneManager.LoadScene("Bunny Jump");
+
     }
 
 
