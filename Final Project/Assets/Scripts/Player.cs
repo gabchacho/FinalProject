@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     //float dirX;
     public TextMeshProUGUI playerHealth;
     public TextMeshProUGUI lose;
+    public AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag.Equals("Enemy"))
         {
             TakeDamage();
+        }
+
+        if (collision.gameObject.tag.Equals("Platform") && Physics2D.Linecast(transform.position, transform.position + Vector3.down)) 
+        {
+            jumpSound.Play();
         }
 
     }

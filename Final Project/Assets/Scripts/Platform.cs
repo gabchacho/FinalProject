@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     public float jumpForce = 10.0f;
     Vector2 velocity;
     Rigidbody2D rigid;
+    //public AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,8 @@ public class Platform : MonoBehaviour
                 velocity = rigid.velocity;
                 velocity.y = jumpForce;
                 rigid.velocity = velocity;
+
+                //jumpSound.Play();
             }
         }
     }
