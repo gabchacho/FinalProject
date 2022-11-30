@@ -14,6 +14,11 @@ public class FollowCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get the aspect ratio
+        //Screen.width / Screen.height;
+
+        Camera.main.orthographicSize = 5.5f * Screen.height / Screen.width;
+
         if (null == m_target)
         {
             m_target = FindObjectOfType<Player>().transform;

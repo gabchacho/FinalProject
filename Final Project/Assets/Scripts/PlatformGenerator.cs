@@ -59,7 +59,7 @@ public class PlatformGenerator : MonoBehaviour
     {
         if (player != null) 
         {
-            if (player.position.y > spawnPosition.y + 10.0f && !reachedEnd)
+            if (player.position.y > spawnPosition.y + 5.0f && !reachedEnd)
             {
                 reachedEnd = true;
 

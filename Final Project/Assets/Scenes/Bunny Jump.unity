@@ -635,7 +635,7 @@ MonoBehaviour:
   - {fileID: 745508765144040198, guid: 875e1af34ffca6f41a1b544cf60c44bb, type: 3}
   - {fileID: 6980296936795553199, guid: e91823a7e74318f43a40d6cee01041ad, type: 3}
   - {fileID: 5807485683448283929, guid: 81583dc971befac43a0fc0bc2eefe45e, type: 3}
-  numOfSections: 15
+  numOfSections: 20
   endZone: {fileID: 973029717186930994, guid: 60f7692213a6e404faea6462849c407a, type: 3}
   player: {fileID: 863404685}
   win: {fileID: 1065813392}
@@ -1726,7 +1726,7 @@ Transform:
   m_GameObject: {fileID: 1078349633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.16, y: -1.12, z: 0}
-  m_LocalScale: {x: 1.6044985, y: 1.6044985, z: 1.6044985}
+  m_LocalScale: {x: 1.6044985, y: 2.1259606, z: 1.6044985}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1162288413}
