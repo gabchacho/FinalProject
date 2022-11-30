@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float m_forwardSpeed = 2.2f;
     protected Rigidbody2D rigid;
 
+    public AudioSource slimeDead;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -30,6 +32,8 @@ public class Enemy : MonoBehaviour
 
             if (health == 0) 
             {
+                //slimeDead.Play();
+
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
             }

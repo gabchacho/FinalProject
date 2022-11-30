@@ -13,21 +13,27 @@ public class Player : MonoBehaviour
     public float speed = 10.0f;
     Vector2 playVel;
     public TextMeshProUGUI playerHealth;
-    public TextMeshProUGUI lose;
+    public GameObject imageHealth;
+    public GameObject lose;
+
     public AudioSource jumpSound;
+    public AudioSource healthGrab;
+    public AudioSource loseSound;
+    public AudioSource playerHit;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        playerHealth.text = "Health: 3";
+        playerHealth.text = "3";
+        imageHealth.gameObject.SetActive(true);
         lose.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.acceleration.x > 0) 
+        if (Input.acceleration.x != 0) 
         {
             movement = Input.acceleration.x * speed;
         } else
@@ -42,7 +48,6 @@ public class Player : MonoBehaviour
     {
         playVel = rigidbody.velocity;
         playVel.x = movement;
-        //playVel.x = dirX;
         rigidbody.velocity = playVel;
     }
 
@@ -53,11 +58,16 @@ public class Player : MonoBehaviour
             TakeDamage();
         }
 
-        /*if (collision.gameObject.tag.Equals("Platform") && Physics2D.Linecast(transform.position, transform.position + Vector3.down)) 
+        if (collision.gameObject.tag.Equals("Heart")) 
         {
-            jumpSound.Play();
-        }*/
+            Destroy(collision.gameObject);
 
+            healthGrab.Play();
+
+            health = 3;
+
+            playerHealth.text = health.ToString();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,9 +93,11 @@ public class Player : MonoBehaviour
 
     private void TakeDamage() 
     {
+        playerHit.Play();
+
         health -= 1;
 
-        playerHealth.text = "Health: " + health.ToString();
+        playerHealth.text = health.ToString();
 
         if (health <= 0)
         {
@@ -97,6 +109,8 @@ public class Player : MonoBehaviour
 
     private void Die() 
     {
+        loseSound.Play();
+
         lose.gameObject.SetActive(true);
 
         StartCoroutine(Restart());

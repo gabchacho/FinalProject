@@ -47,6 +47,7 @@ MonoBehaviour:
   enemList:
   - {fileID: 6181528028456131274, guid: 517a4cd12e1ed0b478e93178d384840b, type: 3}
   - {fileID: 6705100795579212474, guid: 4ea7fd418654a1240b998fcc5bdfe39e, type: 3}
+  purpleHeart: {fileID: 3978938934331178026, guid: 7c9ec196787f8b9418c83fe7750d9cfd, type: 3}
 --- !u!1 &495069289797302243
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +95,7 @@ MonoBehaviour:
   enemList:
   - {fileID: 6181528028456131274, guid: 517a4cd12e1ed0b478e93178d384840b, type: 3}
   - {fileID: 6705100795579212474, guid: 4ea7fd418654a1240b998fcc5bdfe39e, type: 3}
+  purpleHeart: {fileID: 3978938934331178026, guid: 7c9ec196787f8b9418c83fe7750d9cfd, type: 3}
 --- !u!1 &1253896212082465027
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +182,7 @@ MonoBehaviour:
   enemList:
   - {fileID: 6181528028456131274, guid: 517a4cd12e1ed0b478e93178d384840b, type: 3}
   - {fileID: 6705100795579212474, guid: 4ea7fd418654a1240b998fcc5bdfe39e, type: 3}
+  purpleHeart: {fileID: 3978938934331178026, guid: 7c9ec196787f8b9418c83fe7750d9cfd, type: 3}
 --- !u!1001 &1907085826459463717
 PrefabInstance:
   m_ObjectHideFlags: 0

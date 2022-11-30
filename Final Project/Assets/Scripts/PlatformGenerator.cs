@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlatformGenerator : MonoBehaviour
 {
@@ -20,9 +21,14 @@ public class PlatformGenerator : MonoBehaviour
 
     bool reachedEnd = false;
 
+    public GameObject win;
+
+    public AudioSource winSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        win.gameObject.SetActive(false);
 
         spawnPosition = player.position + offset;
 
@@ -43,8 +49,9 @@ public class PlatformGenerator : MonoBehaviour
             Instantiate(sections[whichPlatform], spawnPosition, Quaternion.identity);
         }
 
-        Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
+        //endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
 
+        //Instantiate(endZone, spawnPosition + offset, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -52,12 +59,32 @@ public class PlatformGenerator : MonoBehaviour
     {
         if (player != null) 
         {
-            if (player.position.y > spawnPosition.y && !reachedEnd)
+            if (player.position.y > spawnPosition.y + 10.0f && !reachedEnd)
             {
-                endZone.transform.localEulerAngles = new Vector3(0, 0, 0);
-
                 reachedEnd = true;
+
+                win.gameObject.SetActive(true);
+
+                winSound.Play();
+
+                StartCoroutine(Restart());
+
             }
         }
     }
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSecondsRealtime(3.0f);
+
+        SceneManager.LoadScene("Bunny Jump");
+
+    }
+
 }
+
+
+
+
+
+

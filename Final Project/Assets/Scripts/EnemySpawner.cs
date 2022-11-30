@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> enemList;
 
+    public GameObject purpleHeart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,14 @@ public class EnemySpawner : MonoBehaviour
 
         int num = Random.Range(0, 10);
 
-        if (num < 7) 
+        if (num < 9)
         {
             //Instantiate(enem, transform.position, transform.rotation);
             Instantiate(enemList[whichEnem], transform.position, transform.rotation);
+        }
+        else 
+        {
+            Instantiate(purpleHeart, transform.position, transform.rotation);
         }
 
         Destroy(gameObject);

@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
     Vector3 touchPos;
     float timer = 0.5f;
 
+    public AudioSource shootSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +30,6 @@ public class Weapon : MonoBehaviour
             touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
             Shoot(touchPos);
-
-            /*touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-
-            touchPos.z = 0f;
-
-            transform.position = touchPos;*/
         }
 
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) 
@@ -47,7 +43,6 @@ public class Weapon : MonoBehaviour
 
     void Shoot(Vector3 loc)    
     {
-
         //these two lines aim at the player's tap
         Vector3 newPos = Vector3.Normalize(loc - transform.position);
 
@@ -72,13 +67,11 @@ public class Weapon : MonoBehaviour
 
         if (timer < 0) 
         {
+            shootSound.Play();
+
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
             timer = 0.5f;
         }
-
-        
-      
-
     }
 }
